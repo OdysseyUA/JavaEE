@@ -43,12 +43,13 @@ public class Application {
     }
 
     public void marshallExample() {
+        Group group = createJavaObjectExample1();
         try {
             JAXBContext context = JAXBContext.newInstance(Group.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            marshaller.marshal(createJavaObjectExample1(), System.out);
-            marshaller.marshal(createJavaObjectExample1(), new File(FILE_NAME));
+            marshaller.marshal(group, System.out);
+            marshaller.marshal(group, new File(FILE_NAME));
 
         } catch (JAXBException exception) {
             Logger.getLogger(Application.class.getName()).
@@ -79,6 +80,7 @@ public class Application {
 
             //prove the Group is recreated
             Group groupCopy = (Group) o;
+            System.out.println();
             System.out.println("Objects created from XML:");
             System.out.println(groupCopy.getName());
             for (Person person : groupCopy.getMember()) {

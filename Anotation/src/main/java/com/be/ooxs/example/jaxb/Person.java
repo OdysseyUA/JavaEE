@@ -13,6 +13,7 @@ public class Person {
     private String firstName;
     private String lastName;
 
+
     public Date getBirthDate() {
         return birthDate;
     }
@@ -21,6 +22,7 @@ public class Person {
         this.birthDate = birthDate;
     }
 
+
     public String getFirstName() {
         return firstName;
     }
@@ -28,6 +30,7 @@ public class Person {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
 
     public String getLastName() {
         return lastName;
