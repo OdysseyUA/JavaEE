@@ -25,8 +25,8 @@ public class Application {
         Group group = new Group();
         group.setName("Test Group 1");
         try {
-            group.getMember().add(createPerson("Alice", "Anderssen", "1970-01-01"));
-            group.getMember().add(createPerson("Bert", "Bobo", "1980-02-02"));
+            group.getMembers().add(createPerson("Alice", "Anderssen", "1970-01-01"));
+            group.getMembers().add(createPerson("Bert", "Bobo", "1980-02-02"));
         } catch (ParseException exception) {
             Logger.getLogger(Application.class.getName()).
                     log(Level.ALL, "createJavaObjectExample1 threw ParseException", exception);
@@ -83,7 +83,7 @@ public class Application {
             System.out.println();
             System.out.println("Objects created from XML:");
             System.out.println(groupCopy.getName());
-            for (Person person : groupCopy.getMember()) {
+            for (Person person : groupCopy.getMembers()) {
                 System.out.println(person.getFirstName());
             }
         } catch (JAXBException exception) {
