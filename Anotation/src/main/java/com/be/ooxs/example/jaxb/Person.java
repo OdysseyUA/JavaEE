@@ -5,8 +5,10 @@ package com.be.ooxs.example.jaxb;
  */
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+@XmlRootElement(name="Person")
 @XmlType(propOrder = { "lastName", "firstName", "birthDate" }, name = "person")
 public class Person {
     private Date birthDate;

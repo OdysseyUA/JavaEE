@@ -19,6 +19,7 @@ import javax.xml.bind.Unmarshaller;
 
 public class Application {
     private static final String FILE_NAME = "jaxb-group.xml";
+    private static final String FILE_NAME_PERSON = "jaxb-person.xml";
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     public Group createJavaObjectExample1() {
@@ -50,8 +51,9 @@ public class Application {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.marshal(group, System.out);
             marshaller.marshal(group, new File(FILE_NAME));
+            marshaller.marshal(createPerson("Mark", "Avrely", "1982-02-03"), new File(FILE_NAME_PERSON));
 
-        } catch (JAXBException exception) {
+        } catch (JAXBException|ParseException exception) {
             Logger.getLogger(Application.class.getName()).
                     log(Level.SEVERE, "marshallExample threw JAXBException", exception);
         }
