@@ -45,15 +45,21 @@ public class Application {
 
     private void marshallExample() {
         Group group = createJavaObjectExample1();
+
         try {
+            Person person = createPerson("Mark", "Avrely", "1982-02-03");
+
             JAXBContext context = JAXBContext.newInstance(Group.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.marshal(group, System.out);
             marshaller.marshal(group, new File(FILE_NAME));
-            marshaller.marshal(createPerson("Mark", "Avrely", "1982-02-03"), new File(FILE_NAME_PERSON));
+            System.out.println();
 
-        } catch (JAXBException|ParseException exception) {
+            marshaller.marshal(person, System.out);
+            marshaller.marshal(person, new File(FILE_NAME_PERSON));
+
+        } catch (JAXBException|ParseException  exception) {
             Logger.getLogger(Application.class.getName()).
                     log(Level.SEVERE, "marshallExample threw JAXBException", exception);
         }
