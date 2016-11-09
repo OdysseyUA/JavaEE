@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class ShortDateFormatter extends XmlAdapter<String, Date> {
 
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
     public Date unmarshal(String date) throws Exception {
