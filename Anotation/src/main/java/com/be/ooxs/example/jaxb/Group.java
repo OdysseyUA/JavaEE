@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+@SuppressWarnings("WeakerAccess")
 @XmlType(propOrder = { "name", "members" }, name = "group")
 @XmlRootElement
 public class Group {

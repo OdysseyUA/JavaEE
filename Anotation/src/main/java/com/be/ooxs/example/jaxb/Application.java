@@ -22,7 +22,7 @@ public class Application {
     private static final String FILE_NAME_PERSON = "jaxb-person.xml";
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-    public Group createJavaObjectExample1() {
+    private Group createJavaObjectExample1() {
         Group group = new Group();
         group.setName("Test Group 1");
         try {
@@ -35,7 +35,7 @@ public class Application {
         return group;
     }
 
-    public Person createPerson(String firstName, String lastName, String birthDate) throws ParseException {
+    private Person createPerson(String firstName, String lastName, String birthDate) throws ParseException {
         Person person = new Person();
         person.setBirthDate(format.parse(birthDate));
         person.setFirstName(firstName);
@@ -43,7 +43,7 @@ public class Application {
         return person;
     }
 
-    public void marshallExample() {
+    private void marshallExample() {
         Group group = createJavaObjectExample1();
         try {
             JAXBContext context = JAXBContext.newInstance(Group.class);
@@ -59,7 +59,7 @@ public class Application {
         }
     }
 
-    public void unmarshallExample() {
+    private void unmarshallExample() {
         try {
             JAXBContext context =
                     JAXBContext.newInstance(Group.class);

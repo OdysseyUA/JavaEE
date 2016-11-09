@@ -8,6 +8,7 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+@SuppressWarnings("WeakerAccess")
 @XmlRootElement(name="Person")
 @XmlType(propOrder = { "lastName", "firstName", "birthDate" }, name = "person")
 public class Person {
