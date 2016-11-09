@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @SuppressWarnings("WeakerAccess")
 @XmlRootElement
-@XmlType(propOrder = { "firstName", "lastName", "birthDate" }, name = "person")
+@XmlType(propOrder = { "firstName", "lastName", "birthDate", "type" }, name = "person")
 public class Person {
     private Date birthDate;
     private String firstName;

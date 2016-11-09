@@ -26,7 +26,7 @@ public class Application {
         Group group = new Group();
         group.setName("Test Group 1");
 
-        group.getMembers().add(createPerson("Alice", "Anderssen", "1970-01-01"));
+        group.getMembers().add(createPerson("Alice", "Anderssen", "2000-05-03"));
         group.getMembers().add(createPerson("Bert", "Bobo", "1980-02-02"));
 
         return group;
