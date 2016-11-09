@@ -25,30 +25,32 @@ public class Application {
     private Group createJavaObjectExample1() {
         Group group = new Group();
         group.setName("Test Group 1");
-        try {
-            group.getMembers().add(createPerson("Alice", "Anderssen", "1970-01-01"));
-            group.getMembers().add(createPerson("Bert", "Bobo", "1980-02-02"));
-        } catch (ParseException exception) {
-            Logger.getLogger(Application.class.getName()).
-                    log(Level.ALL, "createJavaObjectExample1 threw ParseException", exception);
-        }
+
+        group.getMembers().add(createPerson("Alice", "Anderssen", "1970-01-01"));
+        group.getMembers().add(createPerson("Bert", "Bobo", "1980-02-02"));
+
         return group;
     }
 
-    private Person createPerson(String firstName, String lastName, String birthDate) throws ParseException {
+    private Person createPerson(String firstName, String lastName, String birthDate)  {
         Person person = new Person();
-        person.setBirthDate(format.parse(birthDate));
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
+        try {
+            person.setBirthDate(format.parse(birthDate));
+            person.setFirstName(firstName);
+            person.setLastName(lastName);
+        }
+        catch (ParseException exception) {
+            Logger.getLogger(Application.class.getName()).
+                    log(Level.ALL, "createPerson threw ParseException", exception);
+        }
         return person;
     }
 
     private void marshallExample() {
         Group group = createJavaObjectExample1();
+        Person person = createPerson("Mark", "Avrely", "1982-02-03");
 
         try {
-            Person person = createPerson("Mark", "Avrely", "1982-02-03");
-
             JAXBContext context = JAXBContext.newInstance(Group.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -59,7 +61,7 @@ public class Application {
             marshaller.marshal(person, System.out);
             marshaller.marshal(person, new File(FILE_NAME_PERSON));
 
-        } catch (JAXBException|ParseException  exception) {
+        } catch (JAXBException  exception) {
             Logger.getLogger(Application.class.getName()).
                     log(Level.SEVERE, "marshallExample threw JAXBException", exception);
         }
